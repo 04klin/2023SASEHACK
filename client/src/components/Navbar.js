@@ -5,10 +5,13 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
 
   return (
-    <div className="navbar flex">      
-      <h1 className="title">Sustainability Tracker</h1>      
+    <div className="navbar flex">
       <div>
         <Link className="navlink" to="/">Home</Link>
+        <Link className="navlink" to="/information">Information</Link>
+      </div>      
+      <h1 className="title">Sustainability Tracker</h1>      
+      <div>        
         <Link className="navlink" to="/signup">Signup</Link>
         <Link className="navlink" to="/login">Login</Link>
       </div>     

@@ -1,8 +1,31 @@
-.dailyMissions{
-  background-color: #087CA7;
-  box-shadow: 0px 0px 10px black;
-  max-width: 80%;
+.dailyMissions, .dailyMissionsClicked{
+  background-color: #f1f3f4;
+  box-shadow: 0px 0px 10px #f1f3f4;
+  max-width: 90%;
+  border-color: #f1f3f4;
   border-radius: 20px;
   text-align: center;
-  width: 400px;
+  width: 600px;
+  height: 157px;
 }
+
+.dailyMissionsClicked{
+  background-color: #04F06A;
+}
+
+.dailyMissions:hover{
+  background-color: #CFC7D2;
+  box-shadow: 0px 0px 10px #CFC7D2;
+  border-color: #CFC7D2;
+}
+
+.dailyMissionsClicked:hover {
+  background-color: #5FBB97;
+  box-shadow: 0px 0px 10px #5FBB97;
+  border-color: #5FBB97;
+}
+
+
+
+
+

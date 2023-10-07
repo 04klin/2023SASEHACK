@@ -1,33 +1,43 @@
-import { useState } from 'react'
+// Sign in
+import React, { useState } from 'react';
+import { auth } from '../firebase';
 
-const Login = () => {
 
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
+function SignIn() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    auth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        // Signed in
+        var user = userCredential.user;
+        console.log('User signed in: ', user);
+      })
+      .catch((error) => {
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        console.log('Error code: ', errorCode);
+        console.log('Error message: ', errorMessage);
+      });
+  };
+
 
   return (
-    <div>
-      <h1>Login</h1>
-
-      <form action="">
-        <p>User</p>
-        <input 
-          type="text"
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-          required
-              />
-        <p>Pass</p>
-        <input 
-          type="text"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          required
-              />
+    <div className='authentication-container'>
+      <form className="login-container" onSubmit={handleSubmit}>
+        <label>Email</label>
+        <input className="flex" type="email" onChange={e => setEmail(e.target.value)} placeholder="Email" />
+        <label>Password</label>
+        <input className="flex" type="password" onChange={e => setPassword(e.target.value)} placeholder="Password" />
+        <button className="authentication-button flex" type="submit">Sign In</button>
       </form>
     </div>
-  )
-
+    
+  );
 }
 
-export default Login
+
+export default SignIn;

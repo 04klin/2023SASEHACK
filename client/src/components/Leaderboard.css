@@ -1,11 +1,38 @@
 
 .leaderboardContainer {
-  background-color: #998DA0;
+  background-color: #303030;
   width: 50%;
-  height:50%;
-  border-radius: 20px;
+  height: 630px;
+  border-radius: 20px 20px 70px 70px;
 }
 
 .leaderboardTitle {
   text-align: center;
+  color: #f1f3f4;
+  margin-bottom: 0;
 }
+
+.whitetext {
+  color: #f1f3f4;
+}
+
+.leaderboard{
+  background-color: #f1f3f4;
+  box-shadow: 0px 0px 10px lightblue;
+  max-width: 90%;
+  border-radius: 20px;
+  text-align: center;
+  width: 600px;
+  margin: auto;
+  height: 513px;
+}
+
+.leaderboard-content {
+  margin-left: 150px;
+  margin-right: 150px;
+}
+
+.player {
+  font-size: 23px;
+}
+

@@ -1,4 +1,8 @@
+* {
+  font-family: "Bebas Neue";
+}
 body {
   margin: 0;
+  background-color: #484848;
 }
 

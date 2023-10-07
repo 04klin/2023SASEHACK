@@ -1,12 +1,14 @@
 .missionsContainer{
-  background-color: #EEE5E5;
+  background-color: #303030;
   width: 50%;
-  height: 50%;
-  border-radius: 20px;
+  height: 630px;
+  border-radius: 20px 20px 70px 70px;
 }
 
 .missionsTitle {
   text-align: center;
+  color:#f1f3f4;
+  margin-bottom: 0;
 }
 
 .missionsList{
