@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Missions from './components/Missions';
 import Leaderboard from './components/Leaderboard.js'
@@ -6,7 +5,7 @@ import Login from './components/Login';
 import Signup from './components/Signup';
 import Navbar from './components/Navbar';
 
-import { Routes, Route, BrowserRouter, Navigate } from 'react-router-dom';
+import { Routes, Route, BrowserRouter } from 'react-router-dom';
 
 
 function App() {
