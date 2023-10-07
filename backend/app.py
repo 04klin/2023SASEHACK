@@ -5,7 +5,7 @@ from model import db, User
  
 app = Flask(__name__)
  
-app.config['SECRET_KEY'] = 'cairocoders-ednalan'
+app.config['SECRET_KEY'] = 'something'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flaskdb.db'
  
 SQLALCHEMY_TRACK_MODIFICATIONS = False

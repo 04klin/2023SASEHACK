@@ -1474,3 +1474,6 @@ backend/venv/Scripts/pip3.11.exe
 backend/venv/Scripts/pip3.exe
 backend/venv/Scripts/python.exe
 backend/venv/Scripts/pythonw.exe
+backend/__pycache__/app.cpython-311.pyc
+backend/__pycache__/model.cpython-311.pyc
+backend/__pycache__/app.cpython-311.pyc
