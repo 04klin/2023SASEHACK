@@ -1,0 +1,10 @@
+.missionsContainer{
+  background-color: green;
+  width: 50%;
+  height: 50%;
+  border-radius: 20px;
+}
+
+.missionsTitle {
+  text-align: center;
+}
