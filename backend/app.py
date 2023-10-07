@@ -1,7 +1,9 @@
-from flask import Flask, request, jsonify, session
+from flask import Flask, request, jsonify, session, render_template, redirect
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS, cross_origin 
 from model import db, User
+from daily_missions import daily_missions
+import random
  
 app = Flask(__name__)
  
