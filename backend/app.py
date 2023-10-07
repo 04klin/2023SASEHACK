@@ -1,7 +1,6 @@
-#C:\flask_dev\flaskreact\app.py
 from flask import Flask, request, jsonify, session
-from flask_bcrypt import Bcrypt #pip install Flask-Bcrypt = https://pypi.org/project/Flask-Bcrypt/
-from flask_cors import CORS, cross_origin #ModuleNotFoundError: No module named 'flask_cors' = pip install Flask-Cors
+from flask_bcrypt import Bcrypt
+from flask_cors import CORS, cross_origin 
 from model import db, User
  
 app = Flask(__name__)
@@ -25,7 +24,7 @@ def hello_world():
  
 @app.route("/signup", methods=["POST"])
 def signup():
-    email = request.json["email"]
+    username = request.json["username"]
     password = request.json["password"]
  
     user_exists = User.query.filter_by(email=email).first() is not None
@@ -34,7 +33,7 @@ def signup():
         return jsonify({"error": "Email already exists"}), 409
      
     hashed_password = bcrypt.generate_password_hash(password)
-    new_user = User(email=email, password=hashed_password)
+    new_user = User(username=username, password=hashed_password)
     db.session.add(new_user)
     db.session.commit()
  
@@ -42,15 +41,15 @@ def signup():
  
     return jsonify({
         "id": new_user.id,
-        "email": new_user.email
+        "username": new_user.username
     })
  
 @app.route("/login", methods=["POST"])
 def login_user():
-    email = request.json["email"]
+    username = request.json["username"]
     password = request.json["password"]
   
-    user = User.query.filter_by(email=email).first()
+    user = User.query.filter_by(username=username).first()
   
     if user is None:
         return jsonify({"error": "Unauthorized Access"}), 401
@@ -62,7 +61,7 @@ def login_user():
   
     return jsonify({
         "id": user.id,
-        "email": user.email
+        "username": user.username
     })
  
 if __name__ == "__main__":
