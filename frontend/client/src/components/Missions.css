@@ -1,5 +1,5 @@
 .missionsContainer{
-  background-color: green;
+  background-color: #EEE5E5;
   width: 50%;
   height: 50%;
   border-radius: 20px;
@@ -7,4 +7,14 @@
 
 .missionsTitle {
   text-align: center;
+}
+
+.missionsList{
+  align-items: center;
+}
+
+.flex-down {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }

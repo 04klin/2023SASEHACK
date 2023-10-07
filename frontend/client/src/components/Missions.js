@@ -20,10 +20,11 @@ const Missions = () => {
   return(
     <div className="missionsContainer">
       <h1 className="missionsTitle">Dailies</h1>
-      <p>This is where log your Dailies</p>
-      <ul>
-        {missions.map(item => <li>{item}</li>)}
-      </ul>
+      
+      <div className="flex-down">
+        {missions.map(item => <li className="missionsList flex-down">{item}</li>)}
+      </div>
+      
     </div>
   )
 }
