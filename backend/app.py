@@ -5,7 +5,7 @@ from model import db, User
  
 app = Flask(__name__)
  
-app.config['SECRET_KEY'] = 'cairocoders-ednalan'
+app.config['SECRET_KEY'] = 'something'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///flaskdb.db'
  
 SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -27,7 +27,7 @@ def signup():
     username = request.json["username"]
     password = request.json["password"]
  
-    user_exists = User.query.filter_by(email=email).first() is not None
+    user_exists = User.query.filter_by(username=username).first() is not None
  
     if user_exists:
         return jsonify({"error": "Email already exists"}), 409
