@@ -1,5 +1,6 @@
+import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 import React, { useState } from 'react';
-import { auth } from '../firebase';
 
 function SignUp() {
   const [displayName, setDisplayName] = useState('');
@@ -7,13 +8,26 @@ function SignUp() {
   const [password, setPassword] = useState('');
   const [retypePassword, setRetypePassword] = useState('');
 
+  const auth = getAuth();
+  const db = getFirestore();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    auth.createUserWithEmailAndPassword(email, password)
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up
         var user = userCredential.user;
         console.log('User signed up: ', user);
+        // Update the user's display name
+        updateProfile(user, {
+          displayName: displayName
+        }).then(() => {
+          console.log('Display name updated successfully!');
+          // Add data to Firestore
+          addData(user.uid);
+        }).catch((error) => {
+          console.log('Error updating display name: ', error);
+        });
       })
       .catch((error) => {
         var errorCode = error.code;
@@ -22,6 +36,19 @@ function SignUp() {
         console.log('Error message: ', errorMessage);
       });
   };
+
+  async function addData(userId) {
+    try {
+      await addDoc(collection(db, "users"), {
+        uid: userId,
+        displayName: displayName,
+        email: email
+      });
+      console.log('User data added to Firestore');
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+  }
 
   return (
     <div className='authentication-container'>
@@ -37,8 +64,6 @@ function SignUp() {
         <button className="authentication-button flex" type="submit">Sign Up</button>
       </form>
     </div>
-
-    
   );
 }
 
