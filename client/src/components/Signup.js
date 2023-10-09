@@ -1,5 +1,5 @@
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, setDoc, doc} from "firebase/firestore";
 import React, { useState } from 'react';
 
 function SignUp() {
@@ -39,10 +39,11 @@ function SignUp() {
 
   async function addData(userId) {
     try {
-      await addDoc(collection(db, "users"), {
+      await setDoc(doc(db, "users", email), {
         uid: userId,
         displayName: displayName,
-        email: email
+        email: email,
+        points: 0
       });
       console.log('User data added to Firestore');
     } catch (e) {

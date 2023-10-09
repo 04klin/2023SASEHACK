@@ -1,16 +1,15 @@
 // Sign in
 import React, { useState } from 'react';
-import { auth } from '../firebase';
-
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../firebase.js';
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    auth.signInWithEmailAndPassword(email, password)
+    signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         var user = userCredential.user;
@@ -23,7 +22,6 @@ function SignIn() {
         console.log('Error message: ', errorMessage);
       });
   };
-
 
   return (
     <div className='authentication-container'>
@@ -38,6 +36,5 @@ function SignIn() {
     
   );
 }
-
 
 export default SignIn;
